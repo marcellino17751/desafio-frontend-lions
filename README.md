@@ -3,7 +3,7 @@ Desafio Técnico – Website Lions Seminovos
 Este repositório contém a solução desenvolvida para o desafio técnico de criação do website da Lions Seminovos.
 O projeto consiste em uma Single Page Application (SPA) responsiva, com foco em experiência do usuário, performance e fidelidade à identidade visual da marca.
 
-O site está disponível para visualização online através do GitHub Pages.
+O site está disponível para visualização online através do GitHub Pages: https://marcellino17751.github.io/desafio-frontend-lions/
 
 Visualização do Projeto
 
