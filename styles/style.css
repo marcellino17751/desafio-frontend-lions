@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Identidade Visual Lions */
+.lions-blue { 
+    background-color: #0a1931; 
+}
+.lions-yellow { 
+    background-color: #eab308; 
+}
+.text-lions-blue { 
+    color: #0a1931; 
+}
+.text-lions-yellow { 
+    color: #eab308; 
+}
+
+/* Controle de Abas */
+.tab-content { 
+    display: none; 
+}
+.tab-content.active { 
+    display: block; 
+}
+
+.nav-link.active {
+    color: #eab308;
+    border-bottom: 2px solid #eab308;
+}
+
+/* Animações */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}

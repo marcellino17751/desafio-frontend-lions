@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lions Seminovos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <nav class="lions-blue text-white sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="showTab('home')">
+                <div class="lions-yellow p-2 rounded-lg text-lions-blue">
+                    <i data-lucide="car" stroke-width="3"></i>
+                </div>
+                <span class="text-2xl font-black tracking-tighter italic uppercase">Lions<span class="lions-yellow font-light not-italic ml-1 px-1 text-lions-blue">Seminovos</span></span>
+            </div>
+
+            <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest">
+                <button onclick="showTab('home')" class="nav-link active py-1" id="btn-home">Início</button>
+                <button onclick="showTab('catalogo')" class="nav-link py-1" id="btn-catalogo">Catálogo</button>
+                <button onclick="showTab('agendar')" class="nav-link py-1" id="btn-agendar">Agendar</button>
+            </div>
+
+            <a href="https://api.whatsapp.com/send/?phone=558004540505&text&type=phone_number&app_absent=0" class="hidden md:flex lions-yellow text-lions-blue px-6 py-2 rounded-full font-black text-sm uppercase items-center space-x-2">
+                <span>WhatsApp</span>
+                <i data-lucide="phone" size="16"></i>
+            </a>
+
+            <button class="md:hidden" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden lions-blue border-t border-slate-800 p-4 space-y-4 font-bold uppercase text-sm">
+            <button onclick="showTab('home')" class="block w-full text-left">Início</button>
+            <button onclick="showTab('catalogo')" class="block w-full text-left">Catálogo</button>
+            <button onclick="showTab('agendar')" class="block w-full text-left">Agendar</button>
+        </div>
+    </nav>
+
+    <main>
+        <div id="tab-home" class="tab-content active fade-in">
+            <section class="relative h-[500px] lions-blue flex items-center overflow-hidden">
+                <div class="absolute inset-0 opacity-40">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" alt="[Imagem de Carro de Luxo]">
+                </div>
+                <div class="relative max-w-7xl mx-auto px-4 w-full">
+                    <h2 class="text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter leading-none">
+                        A MELHOR <br><span class="text-lions-yellow">EXPERIÊNCIA</span>
+                    </h2>
+                    <p class="text-xl text-slate-200 mt-6 max-w-xl">Veículos com perícia aprovada e as menores taxas do Rio.</p>
+                    <div class="mt-8 flex gap-4">
+                        <button onclick="showTab('catalogo')" class="lions-yellow text-lions-blue px-8 py-4 rounded-xl font-black uppercase tracking-widest text-sm">Ver Estoque</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-yellow-500 text-center">
+                    <i data-lucide="shield-check" class="mx-auto text-lions-blue mb-4" size="40"></i>
+                    <h4 class="font-black uppercase italic text-lions-blue">Garantia Lions</h4>
+                    <p class="text-slate-500 text-sm mt-2">Procedência garantida em 100% do estoque.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-yellow-500 text-center">
+                    <i data-lucide="zap" class="mx-auto text-lions-blue mb-4" size="40"></i>
+                    <h4 class="font-black uppercase italic text-lions-blue">Aprovação Rápida</h4>
+                    <p class="text-slate-500 text-sm mt-2">Crédito facilitado mesmo sem entrada.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-yellow-500 text-center">
+                    <i data-lucide="star" class="mx-auto text-lions-blue mb-4" size="40"></i>
+                    <h4 class="font-black uppercase italic text-lions-blue">Líder em Vendas</h4>
+                    <p class="text-slate-500 text-sm mt-2">Milhares de clientes satisfeitos no RJ.</p>
+                </div>
+            </section>
+        </div>
+
+        <div id="tab-catalogo" class="tab-content fade-in">
+            <div class="max-w-7xl mx-auto px-4 py-12">
+                <h2 class="text-4xl font-black italic text-lions-blue uppercase mb-10">Nosso Estoque</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="lista-veiculos"></div>
+            </div>
+        </div>
+
+        <div id="tab-agendar" class="tab-content fade-in">
+            <div class="max-w-5xl mx-auto px-4 py-12">
+                <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden grid md:grid-cols-2 border">
+                    <div class="lions-blue p-12 text-white">
+                        <h2 class="text-4xl font-black italic uppercase leading-tight">A LIONS ESTÁ COM VOCÊ EM CADA<br><span class="text-lions-yellow">ENCONTRO</span></h2>
+                        <p class="text-slate-300 mt-6">Na LIONS, cada visita é pensada para você. Um momento exclusivo, com atendimento humano e atenção aos detalhes que realmente importam.
+                        Aqui, você não é apenas mais um horário na agenda — é alguém com planos, dúvidas e expectativas que merecem ser respeitadas.
+                        Agende quando for melhor para você. Estamos prontos para receber, ouvir e ajudar no que for preciso.</p>
+                    </div>
+                    <div class="p-12">
+                        <form id="form-agendamento" class="space-y-4">
+                            <input type="text" id="form-nome" placeholder="Nome Completo" required class="w-full p-4 bg-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
+                            <input type="tel" id="form-tel" placeholder="WhatsApp" required class="w-full p-4 bg-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
+                            <select id="form-unidade" required class="w-full p-4 bg-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-yellow-500 transition-all">
+                                <option value="" disabled selected>Escolha a Unidade</option>
+                                <option>Nova Iguaçu</option>
+                                <option>São João de Meriti</option>
+                                <option>Duque de Caxias</option>
+                            </select>
+                            <button type="submit" class="w-full lions-yellow text-lions-blue py-4 rounded-xl font-black uppercase tracking-widest shadow-lg">Enviar Solicitação</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="lions-blue text-slate-500 py-12 px-4 mt-20 border-t-8 border-yellow-500">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-white text-2xl font-black italic uppercase tracking-tighter">Lions Seminovos</span>
+            <p class="text-[10px] mt-4 uppercase tracking-[0.5em] font-bold">&copy; 2026 Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
